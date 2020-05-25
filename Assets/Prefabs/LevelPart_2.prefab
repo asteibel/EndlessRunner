@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3163799602306570171}
   - component: {fileID: 3508031519529462326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sheet_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4838193793479297303}
   - component: {fileID: 968823736263021834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sheet_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7634962715142632257}
   - component: {fileID: 7776262937827460721}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sheet_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4812844994404488118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StartOfPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -286,7 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495472412143445045}
   - component: {fileID: 4394939490014227961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LevelPart_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6483050465159411452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EndOfPlatform
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}

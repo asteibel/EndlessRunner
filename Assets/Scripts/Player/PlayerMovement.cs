@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed;
     public float jumpForce;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     public bool isJumping = false;
     public bool isGrounded = false;
@@ -19,6 +19,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask collisionLayer;
+
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +39,23 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isMoving = true;
-            Debug.Log("key down, is grounded: " + isGrounded);
-            if (isGrounded)
+
+            if (isGrounded) // Begin jump
             {
-                rb.AddForce(new Vector2(0f, jumpForce));
+                rb.velocity = Vector2.up * jumpForce;
             }
         }
+
+        if (rb.velocity.y < 0) // Falling, apply extra gravity
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
+        } else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) // Jumping,  and not holding the space key
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+        }
+
+
+            // rb.velocity = Vector2.up * jumpForce;
     }
 
     // Update is called once per frame
