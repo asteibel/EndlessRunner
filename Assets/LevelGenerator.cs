@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
 
-    private const float PLAYER_DISTANCE_TO_LAST_LEVEL_PART = 200f;
+    private const float PLAYER_DISTANCE_TO_LAST_LEVEL_PART = 100f;
 
     public Transform[] levelParts;
 
@@ -19,7 +19,6 @@ public class LevelGenerator : MonoBehaviour
     {
         lastEndPosition = firstLastLevel.Find("EndOfPlatform").position;
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("first las position: " + lastEndPosition);
     }
 
     private void Update()
