@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
+    public DistanceText distanceText;
+    private float? startingPosition = null;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = true;
 
+            if (startingPosition == null)
+            {
+                startingPosition = transform.position.x;
+            }
+
             if (isGrounded) // Begin jump
             {
                 rb.velocity = Vector2.up * jumpForce;
@@ -53,9 +61,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
         }
-
-
-            // rb.velocity = Vector2.up * jumpForce;
     }
 
     // Update is called once per frame
@@ -66,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
         if (isMoving && canRun)
         {
             rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
+            if (startingPosition != null)
+            {
+                distanceText.updateText(transform.position.x - startingPosition ?? 0f);
+            }
         }
      }
 
