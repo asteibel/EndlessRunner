@@ -39,6 +39,7 @@ public class LevelGenerator : MonoBehaviour
         {
             chosenPart = levelParts[forceLevel];
         }
+        Debug.Log("Spawning level " + chosenPart.name);
         Transform lastLevelSpawnedTransform = SpawnLevelPart(chosenPart, lastEndPosition);
         lastEndPosition = lastLevelSpawnedTransform.Find("EndOfPlatform").position;
     }
