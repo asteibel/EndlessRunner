@@ -21,9 +21,8 @@ public class DistanceText : MonoBehaviour
         
     }
 
-    public void updateText(float distance)
+    public void updateText(int distance)
     {
-        int roundedDistance = Mathf.RoundToInt(distance);
-        distanceText.SetText(roundedDistance.ToString() + "m");
+        distanceText.SetText(distance.ToString() + "m");
     }
 }

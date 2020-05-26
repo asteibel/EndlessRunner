@@ -23,12 +23,13 @@ public class PlayerMovement : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
-    public DistanceText distanceText;
+    private GameManager gameManager;
     private float? startingPosition = null;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -37,31 +38,62 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    private bool isControlledByMobile = false;
+    private bool isControlledByKeys = false;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
-        {
-            isMoving = true;
 
-            if (startingPosition == null)
+        if (!isMoving)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isMoving = true;
+                isControlledByKeys = true;
+            } else if (Input.touchCount > 0)
+            {
+                isMoving = true;
+                isControlledByMobile = true;
+            }
+
+            if (isMoving && startingPosition == null)
             {
                 startingPosition = transform.position.x;
             }
+        }
 
-            if (isGrounded) // Begin jump
+        if (isGrounded)
+        {
+            if (isMoving && isControlledByKeys && Input.GetKeyDown(KeyCode.Space)) // Begin jump
             {
                 rb.velocity = Vector2.up * jumpForce;
+            }
+            else if (isMoving && isControlledByMobile)
+            {
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    rb.velocity = Vector2.up * jumpForce;
+                }
             }
         }
 
         if (rb.velocity.y < 0) // Falling, apply extra gravity
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
-        } else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) // Jumping,  and not holding the space key
+        } else if (rb.velocity.y > 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+            if (isControlledByKeys && !Input.GetKey(KeyCode.Space))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+            } else if (isControlledByMobile && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.touchCount == 0))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+            }
         }
+
     }
+
+    public int currentDistance = 0;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -73,7 +105,8 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
             if (startingPosition != null)
             {
-                distanceText.updateText(transform.position.x - startingPosition ?? 0f);
+                currentDistance = Mathf.RoundToInt(transform.position.x - startingPosition ?? 0f);
+                gameManager.UpdateScore(currentDistance);
             }
         }
      }

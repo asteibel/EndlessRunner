@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - InGameCanvas
+  - GameManager
   layers:
   - Default
   - TransparentFX
