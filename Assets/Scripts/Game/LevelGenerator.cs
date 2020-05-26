@@ -15,6 +15,8 @@ public class LevelGenerator : MonoBehaviour
 
     private GameObject player;
 
+    public int forceLevel = -1;
+
     private void Awake()
     {
         lastEndPosition = firstLastLevel.Find("EndOfPlatform").position;
@@ -31,7 +33,12 @@ public class LevelGenerator : MonoBehaviour
 
     private void SpawnLevelPart()
     {
+
         Transform chosenPart = levelParts[Random.Range(0, levelParts.Length)];
+        if (forceLevel > -1)
+        {
+            chosenPart = levelParts[forceLevel];
+        }
         Transform lastLevelSpawnedTransform = SpawnLevelPart(chosenPart, lastEndPosition);
         lastEndPosition = lastLevelSpawnedTransform.Find("EndOfPlatform").position;
     }

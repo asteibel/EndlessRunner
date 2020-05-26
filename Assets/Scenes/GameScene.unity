@@ -280,6 +280,7 @@ MonoBehaviour:
     m_Bits: 256
   fallMultiplier: 3.5
   lowJumpMultiplier: 3
+  currentDistance: 0
 --- !u!95 &70757
 Animator:
   serializedVersion: 3
@@ -336,6 +337,7 @@ MonoBehaviour:
   - {fileID: 4663357193363673827, guid: fcb6f5da7c47e4a67880933f74ee1f60, type: 3}
   - {fileID: 414591558676844886, guid: 7222ffbbe937d4b7ea1430ad118bb740, type: 3}
   firstLastLevel: {fileID: 418034135}
+  forceLevel: -1
 --- !u!4 &204061545
 Transform:
   m_ObjectHideFlags: 0
