@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
         {
             gameData = new GameData(0);
         }
-        gameData.highScore = 0; // TODO remove
         updateScore.UpdateHighscore(gameData.highScore);
     }
 
