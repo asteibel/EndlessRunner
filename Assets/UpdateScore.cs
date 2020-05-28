@@ -8,6 +8,7 @@ public class UpdateScore : MonoBehaviour
 
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI highscoreText;
+    public TextMeshProUGUI speedText;
 
     public void UpdateDistance(int distance)
     {
@@ -28,5 +29,10 @@ public class UpdateScore : MonoBehaviour
     public void IsHighScoring()
     {
         highscoreText.SetText("new highscore!!");
+    }
+
+    public void SetSpeed(float speed)
+    {
+        speedText.SetText("speed: " + speed + "x");
     }
 }

@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager;
     private float? startingPosition = null;
 
+    public float speedMultiplier = 1f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -102,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isMoving && canRun)
         {
-            rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
+            rb.velocity = new Vector2(speed * Time.deltaTime  *  speedMultiplier, rb.velocity.y);
             if (startingPosition != null)
             {
                 currentDistance = Mathf.RoundToInt(transform.position.x - startingPosition ?? 0f);

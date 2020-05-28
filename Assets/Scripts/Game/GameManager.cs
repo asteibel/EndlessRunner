@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public UpdateScore updateScore;
 
+    private const int DISTANCE_BEFORE_SPEED_MULTIPLIER = 150;
+    private const float SPEED_MULTIPLIER_INCREMENT = 0.015f;
+    private int lastSpeedMultiplerDistance = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -42,6 +46,8 @@ public class GameManager : MonoBehaviour
             gameData = new GameData(0);
         }
         updateScore.UpdateHighscore(gameData.highScore);
+
+        lastSpeedMultiplerDistance = 0;
     }
 
     public void GameIsOver()
@@ -64,6 +70,8 @@ public class GameManager : MonoBehaviour
         gameOverElements.SetActive(false);
         // inGameCanvas.SetActive(true);
         Time.timeScale = 1f;
+        lastSpeedMultiplerDistance = 0;
+        playerMovement.speedMultiplier = 1f;
     }
 
     public void UpdateScore(int distance)
@@ -73,5 +81,11 @@ public class GameManager : MonoBehaviour
         {
             updateScore.IsHighScoring();
         }
+        if  (distance  % DISTANCE_BEFORE_SPEED_MULTIPLIER == 0 && distance != lastSpeedMultiplerDistance)
+        {
+            lastSpeedMultiplerDistance = distance;
+            playerMovement.speedMultiplier += SPEED_MULTIPLIER_INCREMENT;
+        }
+        updateScore.SetSpeed(playerMovement.speedMultiplier);
     }
 }
