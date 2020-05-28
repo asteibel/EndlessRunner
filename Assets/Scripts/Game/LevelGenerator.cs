@@ -16,6 +16,8 @@ public class LevelGenerator : MonoBehaviour
     private GameObject player;
 
     public int forceLevel = -1;
+    public bool debugMode = false;
+    public int debugLevelPartIndex = 0;
 
     private void Awake()
     {
@@ -33,12 +35,20 @@ public class LevelGenerator : MonoBehaviour
 
     private void SpawnLevelPart()
     {
+        Transform chosenPart;
 
-        Transform chosenPart = levelParts[Random.Range(0, levelParts.Length)];
-        if (forceLevel > -1)
+        if (debugMode)
+        {
+            chosenPart = levelParts[debugLevelPartIndex];
+            debugLevelPartIndex = Mathf.Min(debugLevelPartIndex + 1, levelParts.Length - 1);
+        } else if (forceLevel > -1)
         {
             chosenPart = levelParts[forceLevel];
+        } else
+        {
+            chosenPart = levelParts[Random.Range(0, levelParts.Length)];
         }
+
         Debug.Log("Spawning level " + chosenPart.name);
         Transform lastLevelSpawnedTransform = SpawnLevelPart(chosenPart, lastEndPosition);
         lastEndPosition = lastLevelSpawnedTransform.Find("EndOfPlatform").position;
