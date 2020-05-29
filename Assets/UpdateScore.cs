@@ -15,20 +15,20 @@ public class UpdateScore : MonoBehaviour
         distanceText.SetText(distance.ToString() + "m");
     }
 
-    public void UpdateHighscore(int highscore)
+    public void UpdateLongestDistanceRan(int longestDistanceRan)
     {
-        if (highscore > 0)
+        if (longestDistanceRan > 0)
         {
-            highscoreText.SetText("highscore: " + highscore.ToString() + "m");
+            highscoreText.SetText("longest distance ran: " + longestDistanceRan.ToString() + "m");
         } else
         {
-            highscoreText.SetText("no highscore yet...");
+            highscoreText.SetText("first run...");
         }
     }
 
     public void IsHighScoring()
     {
-        highscoreText.SetText("new highscore!!");
+        highscoreText.SetText("new record!!");
     }
 
     public void SetSpeed(float speed)

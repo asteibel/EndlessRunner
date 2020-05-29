@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7942785889610470280}
   m_LocalRotation: {x: -0, y: -0, z: -0.001922343, w: 0.99999815}
-  m_LocalPosition: {x: 23.31, y: -2.0200002, z: 0}
+  m_LocalPosition: {x: 19.35, y: -2.0200002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 414591558676844886}
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 10.498762, y: 0}
+  m_Offset: {x: 8.490305, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -134,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25.77232, y: 1}
+  m_Size: {x: 21.755405, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8855599692325065893
 GameObject:
@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 2639387587363668211, guid: b2650fbe8e59c42dfb134673d5e2a67d,
         type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[1].position.x
-      value: 18
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2648699159312274432, guid: b2650fbe8e59c42dfb134673d5e2a67d,
         type: 3}
@@ -241,22 +241,22 @@ PrefabInstance:
     - target: {fileID: 4127158789423946380, guid: b2650fbe8e59c42dfb134673d5e2a67d,
         type: 3}
       propertyPath: m_LocalAABB.m_Center.x
-      value: 8.0625
+      value: 6.0625
       objectReference: {fileID: 0}
     - target: {fileID: 4127158789423946380, guid: b2650fbe8e59c42dfb134673d5e2a67d,
         type: 3}
       propertyPath: m_LocalAABB.m_Extent.x
-      value: 10.3125
+      value: 8.3125
       objectReference: {fileID: 0}
     - target: {fileID: 4344541964874937828, guid: b2650fbe8e59c42dfb134673d5e2a67d,
         type: 3}
       propertyPath: m_Points.Array.data[1].x
-      value: 17.999998
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4344541964874937828, guid: b2650fbe8e59c42dfb134673d5e2a67d,
         type: 3}
       propertyPath: m_Points.Array.data[2].x
-      value: 18.375
+      value: 14.375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2650fbe8e59c42dfb134673d5e2a67d, type: 3}
@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 7328976410430399804, guid: 1801286a6d0cb497899b8c14b1c26abe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.404717
+      value: 7.79
       objectReference: {fileID: 0}
     - target: {fileID: 7328976410430399804, guid: 1801286a6d0cb497899b8c14b1c26abe,
         type: 3}
@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 7328976410430399804, guid: 1801286a6d0cb497899b8c14b1c26abe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.03
+      value: 14.29
       objectReference: {fileID: 0}
     - target: {fileID: 7328976410430399804, guid: 1801286a6d0cb497899b8c14b1c26abe,
         type: 3}
@@ -407,6 +407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328976410430399805, guid: 1801286a6d0cb497899b8c14b1c26abe,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1801286a6d0cb497899b8c14b1c26abe, type: 3}

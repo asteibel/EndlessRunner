@@ -22,15 +22,17 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public UpdateScore updateScore;
 
-    private const int DISTANCE_BEFORE_SPEED_MULTIPLIER = 150;
-    private const float SPEED_MULTIPLIER_INCREMENT = 0.015f;
+    private const int DISTANCE_BEFORE_SPEED_MULTIPLIER = 100;
+    private const float SPEED_MULTIPLIER_INCREMENT = 0.01f;
     private int lastSpeedMultiplerDistance = 0;
+
+    public GameOver gameOver;
 
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogWarning("");
+            Debug.LogWarning("More than one instance of GameManager");
             return;
         }
         instance = this;
@@ -43,24 +45,34 @@ public class GameManager : MonoBehaviour
         gameData = SaveSystem.LoadGame();
         if  (gameData == null)
         {
-            gameData = new GameData(0);
+            gameData = new GameData(0, 0);
         }
-        updateScore.UpdateHighscore(gameData.highScore);
+        updateScore.UpdateLongestDistanceRan(gameData.longestDistanceRan);
 
         lastSpeedMultiplerDistance = 0;
     }
 
     public void GameIsOver()
     {
-        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
-        gameOverElements.SetActive(true);
+
+
         player.GetComponent<PlayerMovement>().isMoving = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        // inGameCanvas.SetActive(false);
         Time.timeScale = 0f;
-        int totalDistance = playerMovement.currentDistance;
-        gameData.highScore = Mathf.Max(totalDistance, gameData.highScore);
-        updateScore.UpdateHighscore(gameData.highScore);
+
+        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+        gameOverElements.SetActive(true);
+
+
+        int distanceRan = playerMovement.currentDistance;
+        float maxSpeed = playerMovement.speedMultiplier;
+        int score = Mathf.RoundToInt(distanceRan * maxSpeed);
+        bool isHighScore = score > gameData.highScore;
+        gameOver.GameIsOver(distanceRan, maxSpeed, score, isHighScore, gameData.highScore);
+
+        gameData.highScore = Mathf.Max(score, gameData.highScore);
+        gameData.longestDistanceRan = Mathf.Max(distanceRan, gameData.longestDistanceRan);
+        updateScore.UpdateLongestDistanceRan(gameData.longestDistanceRan);
         SaveSystem.SaveGame(gameData);
     }
 
