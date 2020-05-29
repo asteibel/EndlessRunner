@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "214739490546",
+    "firebase_url": "https://marcusruns-4fe63.firebaseio.com",
+    "project_id": "marcusruns-4fe63",
+    "storage_bucket": "marcusruns-4fe63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214739490546:android:fe6ba464c7e84c1ecb226b",
+        "android_client_info": {
+          "package_name": "com.marcusrun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214739490546-naeqd3outsr7h73i54mkm1o2sdc497st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtKA0LJ4ax5sD_bQRUf4lvVHbCI6CG8SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214739490546-naeqd3outsr7h73i54mkm1o2sdc497st.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214739490546:android:951c87d82a79e0afcb226b",
+        "android_client_info": {
+          "package_name": "com.marcusruns"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214739490546-naeqd3outsr7h73i54mkm1o2sdc497st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtKA0LJ4ax5sD_bQRUf4lvVHbCI6CG8SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214739490546-naeqd3outsr7h73i54mkm1o2sdc497st.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
