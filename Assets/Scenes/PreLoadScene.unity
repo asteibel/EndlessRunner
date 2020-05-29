@@ -1931,6 +1931,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverBackground: {fileID: 52386412}
   gameOverElements: {fileID: 1125426335}
+  gameData:
+    highScore: 0
+    longestDistanceRan: 0
   playerMovement: {fileID: 1541632387}
   updateScore: {fileID: 377733181}
   gameOver: {fileID: 153986441}

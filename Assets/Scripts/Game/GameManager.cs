@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject inGameCanvas;
 
-    private GameData gameData;
+    public GameData gameData;
 
     public PlayerMovement playerMovement;
     public UpdateScore updateScore;
@@ -124,5 +124,13 @@ public class GameManager : MonoBehaviour
             playerMovement.speedMultiplier += SPEED_MULTIPLIER_INCREMENT;
         }
         updateScore.SetSpeed(playerMovement.speedMultiplier);
+    }
+
+    public void ResetGameData()
+    {
+        updateScore.UpdateLongestDistanceRan(0);
+        gameData.highScore = 0;
+        gameData.longestDistanceRan = 0;
+        UpdateScore(0);
     }
 }
