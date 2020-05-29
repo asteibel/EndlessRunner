@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public GameOver gameOver;
 
+    private Animator fadeSystem;
+
     private void Awake()
     {
         if (instance != null)
@@ -36,10 +38,16 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
+
         gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         gameOverElements.SetActive(false);
+
         player = GameObject.FindGameObjectWithTag("Player");
         inGameCanvas = GameObject.FindGameObjectWithTag("InGameCanvas");
+
+        inGameCanvas.SetActive(false);
+        player.SetActive(false);
+
         Time.timeScale = 1f;
 
         gameData = SaveSystem.LoadGame();
@@ -50,6 +58,24 @@ public class GameManager : MonoBehaviour
         updateScore.UpdateLongestDistanceRan(gameData.longestDistanceRan);
 
         lastSpeedMultiplerDistance = 0;
+
+        fadeSystem = GameObject.FindGameObjectWithTag("FadeSystem").GetComponent<Animator>();
+    }
+
+    public void StartGame()
+    {
+        fadeSystem.SetTrigger("StartFadeTransition");
+        // inGameCanvas.SetActive(true);
+        // player.SetActive(true);
+        StartCoroutine(LaunchGame());
+    }
+
+    private IEnumerator LaunchGame()
+    {
+        yield return new WaitForSeconds(1f);
+        inGameCanvas.SetActive(true);
+        player.SetActive(true);
+        SceneManager.LoadScene("GameScene");
     }
 
     public void GameIsOver()
@@ -80,7 +106,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameOverElements.SetActive(false);
-        // inGameCanvas.SetActive(true);
         Time.timeScale = 1f;
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;

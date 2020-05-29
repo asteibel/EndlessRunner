@@ -12,9 +12,23 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 velocity;
 
+    public float mainMenuMovementSpeed;
+    public CameraMode cameraMode;
+
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + positionOffset, ref velocity, timeOffset);
+        if (cameraMode == CameraMode.followPlayer)
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + positionOffset, ref velocity, timeOffset);
+        } else if (cameraMode == CameraMode.mainMenu)
+        {
+            transform.position = new Vector3(transform.position.x + mainMenuMovementSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        }
+    }
+
+    public enum CameraMode
+    {
+        followPlayer, mainMenu
     }
 }

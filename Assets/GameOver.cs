@@ -10,18 +10,6 @@ public class GameOver : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI highScoreText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void GameIsOver(int distanceRan, float maxSpeed, int score, bool isHighscore, int highscore)
     {
         scoreBreakdownText.SetText("Distance: " + distanceRan.ToString() + "m" + "\n" + "Max speed: " + maxSpeed.ToString() + "x");

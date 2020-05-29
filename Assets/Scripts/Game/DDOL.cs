@@ -14,6 +14,6 @@ public class DDOL : MonoBehaviour
         {
             DontDestroyOnLoad(go);
         }
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Menu");
     }
 }
