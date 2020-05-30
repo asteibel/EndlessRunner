@@ -1940,6 +1940,9 @@ MonoBehaviour:
   gameData:
     highScore: 0
     longestDistanceRan: 0
+  gameSettings:
+    hasMusicEnabled: 0
+    hasSoundsEnabled: 0
   playerMovement: {fileID: 1541632387}
   updateScore: {fileID: 377733181}
   gameOver: {fileID: 153986441}
@@ -3553,30 +3556,35 @@ MonoBehaviour:
     pitch: 1.66
     source: {fileID: 0}
     loop: 0
+    soundType: 1
   - name: MenuTheme
     clip: {fileID: 8300000, guid: 10ce3f8fe9ab94fcf91ecb8bb1ac7311, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
+    soundType: 0
   - name: GameTheme
     clip: {fileID: 8300000, guid: a059a3db721c94a078e900377f4dbbec, type: 3}
     volume: 0.6
     pitch: 1
     source: {fileID: 0}
     loop: 1
+    soundType: 0
   - name: Jump
     clip: {fileID: 8300000, guid: 299677678257f48fd9f06f556ef1ffee, type: 3}
     volume: 0.5
     pitch: 1.66
     source: {fileID: 0}
     loop: 0
+    soundType: 1
   - name: Jump2
     clip: {fileID: 8300000, guid: 0a446f8545e0544188ce160e68a66fe0, type: 3}
     volume: 0.5
     pitch: 1.66
     source: {fileID: 0}
     loop: 0
+    soundType: 1
 --- !u!4 &2124033524
 Transform:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public TextMeshProUGUI changeMusic;
+    public TextMeshProUGUI changeSounds;
+
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -29,6 +32,23 @@ public class MainMenu : MonoBehaviour
 
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         audioManager.Play("MenuTheme");
+
+        if (gameManager.gameSettings.hasMusicEnabled)
+        {
+            changeMusic.SetText("Turn OFF");
+        } else
+        {
+            changeMusic.SetText("Turn ON");
+        }
+
+        if (gameManager.gameSettings.hasSoundsEnabled)
+        {
+            changeSounds.SetText("Turn OFF");
+        }
+        else
+        {
+            changeSounds.SetText("Turn ON");
+        }
     }
 
     public void StartGame()
@@ -49,5 +69,35 @@ public class MainMenu : MonoBehaviour
     {
         highScore.SetActive(false);
         gameManager.ResetGameData();
+    }
+
+    public void ChangeMusicSettings()
+    {
+        gameManager.gameSettings.hasMusicEnabled = !gameManager.gameSettings.hasMusicEnabled;
+        if (gameManager.gameSettings.hasMusicEnabled)
+        {
+            audioManager.Play("MenuTheme");
+            changeMusic.SetText("Turn OFF");
+        }
+        else
+        {
+            audioManager.Stop("MenuTheme");
+            changeMusic.SetText("Turn ON");
+        }
+        SaveSystem.SaveGameSettings(gameManager.gameSettings);
+    }
+
+    public void ChangeSoundsSettings()
+    {
+        gameManager.gameSettings.hasSoundsEnabled = !gameManager.gameSettings.hasSoundsEnabled;
+        if (gameManager.gameSettings.hasSoundsEnabled)
+        {
+            changeSounds.SetText("Turn OFF");
+        }
+        else
+        {
+            changeSounds.SetText("Turn ON");
+        }
+        SaveSystem.SaveGameSettings(gameManager.gameSettings);
     }
 }

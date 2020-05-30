@@ -18,4 +18,12 @@ public class Sound
     public AudioSource source;
 
     public bool loop;
+
+    public SoundType soundType;
+
+
+    public enum SoundType
+    {
+        music, sounds
+    }
 }

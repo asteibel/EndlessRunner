@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private GameObject inGameCanvas;
 
     public GameData gameData;
+    public GameSettings gameSettings;
 
     public PlayerMovement playerMovement;
     public UpdateScore updateScore;
@@ -66,6 +67,12 @@ public class GameManager : MonoBehaviour
         fadeSystem = GameObject.FindGameObjectWithTag("FadeSystem").GetComponent<Animator>();
 
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
+        gameSettings = SaveSystem.LoadGameSettings();
+        if (gameSettings == null)
+        {
+            gameSettings = new GameSettings(true, true);
+        }
     }
 
     public void StartGame()
