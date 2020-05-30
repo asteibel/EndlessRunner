@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Image gameOverBackground;
 
     public GameObject gameOverElements;
+    public Animator gameOverAnimator;
 
     public static GameManager instance;
 
@@ -44,11 +45,12 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        gameOverElements.SetActive(false);
+        // gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        // gameOverElements.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
         inGameCanvas = GameObject.FindGameObjectWithTag("InGameCanvas");
+        gameOverAnimator = gameOverElements.GetComponent<Animator>();
 
         inGameCanvas.SetActive(false);
         player.SetActive(false);
@@ -102,8 +104,11 @@ public class GameManager : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         Time.timeScale = 0f;
 
-        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
-        gameOverElements.SetActive(true);
+        //        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+        // gameOverElements.SetActive(true);
+
+        gameOverAnimator.ResetTrigger("RestartGame");
+        gameOverAnimator.SetTrigger("GameIsOver");
 
 
         int distanceRan = playerMovement.currentDistance;
@@ -128,11 +133,15 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        gameOverElements.SetActive(false);
+        // gameOverElements.SetActive(false);
         Time.timeScale = 1f;
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;
         audioManager.Play("GameTheme");
+
+
+        gameOverAnimator.ResetTrigger("GameIsOver");
+        gameOverAnimator.SetTrigger("RestartGame");
     }
 
     public void UpdateScore(int distance)
