@@ -344,7 +344,7 @@ MonoBehaviour:
   - {fileID: 52276945121190576, guid: aac701d914029487da4a89bdafb469b7, type: 3}
   firstLastLevel: {fileID: 418034135}
   forceLevel: -1
-  debugMode: 1
+  debugMode: 0
   debugLevelPartIndex: 0
 --- !u!4 &204061545
 Transform:
