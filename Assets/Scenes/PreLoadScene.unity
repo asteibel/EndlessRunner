@@ -299,7 +299,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -225.20935, y: 0, z: -190.16675, w: 16.996918}
+  m_margin: {x: 0.46240234, y: 0, z: 0.15881348, w: -2.0356445}
   m_textInfo:
     textComponent: {fileID: 104393155}
     characterCount: 15
@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888, y: -235}
+  m_AnchoredPosition: {x: 25, y: -940}
   m_SizeDelta: {x: 1205.6678, y: 260.8894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &131169868
@@ -388,7 +388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 135}
+  m_AnchoredPosition: {x: -0.019836, y: -595.64}
   m_SizeDelta: {x: 621.7787, y: 130.38672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &131169870
@@ -777,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31594177fae0e462490f40d29c6c2adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverText: {fileID: 1328455927}
   scoreBreakdownText: {fileID: 1377353145}
   finalScoreText: {fileID: 1244778778}
   highScoreText: {fileID: 104393155}
@@ -2036,6 +2037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1125426336}
+  - component: {fileID: 1125426337}
   m_Layer: 5
   m_Name: GameOverElements
   m_TagString: Untagged
@@ -2068,6 +2070,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1125426337
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125426335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b2d11d58b0dd4fd683a0212341e487d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1157967583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,8 +2189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116.53, y: -90}
-  m_SizeDelta: {x: 854.8434, y: 260.8894}
+  m_AnchoredPosition: {x: 25, y: -687.27}
+  m_SizeDelta: {x: 1025.551, y: 244.57574}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244778778
 MonoBehaviour:
@@ -2190,7 +2211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Final Score: 1000'
+  m_text: 'Score: 1000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54fa42255a5af48d1a9c142301782133, type: 2}
   m_sharedMaterial: {fileID: 8782447121322009387, guid: 54fa42255a5af48d1a9c142301782133,
@@ -2257,13 +2278,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -225.20935, y: 0, z: 0, w: 16.996918}
+  m_margin: {x: 5.900421, y: 0, z: 0, w: 0.6833801}
   m_textInfo:
     textComponent: {fileID: 1244778778}
-    characterCount: 17
+    characterCount: 11
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -2423,7 +2444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 380}
+  m_AnchoredPosition: {x: 0, y: 687}
   m_SizeDelta: {x: 963.1987, y: 201.40015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328455927
@@ -2644,7 +2665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1377353144
 RectTransform:
   m_ObjectHideFlags: 0
