@@ -28,10 +28,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float speedMultiplier = 1f;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // Start is called before the first frame update
@@ -68,6 +71,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isMoving && isControlledByKeys && Input.GetKeyDown(KeyCode.Space)) // Begin jump
             {
+                if (Random.value < 0.5f)
+                {
+                    audioManager.Play("Jump");
+                }
+                else
+                {
+                    audioManager.Play("Jump2");
+                } 
                 rb.velocity = Vector2.up * jumpForce;
             }
             else if (isMoving && isControlledByMobile)
