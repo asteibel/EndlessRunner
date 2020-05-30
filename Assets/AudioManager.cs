@@ -27,7 +27,12 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("sound " + name + " not found");
             return;
         }
-        s.source.Play();
+        GameSettings gameSettings = GameManager.instance.gameSettings;
+        if ((gameSettings.hasMusicEnabled && s.soundType == Sound.SoundType.music) ||
+            (gameSettings.hasSoundsEnabled && s.soundType == Sound.SoundType.sounds))
+        {
+            s.source.Play();
+        }
     }
 
     public void Stop(string name)
