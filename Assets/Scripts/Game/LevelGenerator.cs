@@ -19,10 +19,16 @@ public class LevelGenerator : MonoBehaviour
     public bool debugMode = false;
     public int debugLevelPartIndex = 0;
 
+    private float playerStartPosition;
+    private GameManager gameManager;
+
     private void Awake()
     {
         lastEndPosition = firstLastLevel.Find("EndOfPlatform").position;
         player = GameObject.FindGameObjectWithTag("Player");
+
+        playerStartPosition = player.transform.position.x;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -51,7 +57,15 @@ public class LevelGenerator : MonoBehaviour
 
         Debug.Log("Spawning level " + chosenPart.name);
         Transform lastLevelSpawnedTransform = SpawnLevelPart(chosenPart, lastEndPosition);
+
         lastEndPosition = lastLevelSpawnedTransform.Find("EndOfPlatform").position;
+
+
+        /** float startOfPlatform = lastLevelSpawnedTransform.Find("StartOfPlatform").position.x;
+        bool isHighScore = (startOfPlatform - playerStartPosition <= gameManager.gameData.longestDistanceRan) &&
+            (lastEndPosition.x - playerStartPosition >= gameManager.gameData.longestDistanceRan);
+        Debug.Log("distance from start to end  level: " + (lastEndPosition.x - playerStartPosition));
+        Debug.Log("Is highscore: " + isHighScore); */ // TODO Show marker when crossing highscore
     }
 
     private Transform SpawnLevelPart(Transform levelPart, Vector3 position)

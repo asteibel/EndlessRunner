@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Firebase.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of GameManager");
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
         // inGameCanvas.SetActive(true);
         // player.SetActive(true);
         StartCoroutine(LaunchGame());
+        FirebaseAnalytics.LogEvent("GameStarted");
     }
 
     private IEnumerator LaunchGame()
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour
 
         int distanceRan = playerMovement.currentDistance;
         float maxSpeed = playerMovement.speedMultiplier;
-        int score = Mathf.RoundToInt(distanceRan * maxSpeed);
+        int score = ComputeScore(distanceRan, maxSpeed);
         bool isHighScore = score > gameData.highScore;
         gameOver.GameIsOver(distanceRan, maxSpeed, score, isHighScore, gameData.highScore);
 
@@ -106,6 +109,13 @@ public class GameManager : MonoBehaviour
         gameData.longestDistanceRan = Mathf.Max(distanceRan, gameData.longestDistanceRan);
         updateScore.UpdateLongestDistanceRan(gameData.longestDistanceRan);
         SaveSystem.SaveGame(gameData);
+    }
+
+    public int ComputeScore(int distanceRan, float maxSpeed)
+    {
+        // int score = Mathf.RoundToInt(distanceRan * maxSpeed);
+        int score = distanceRan; // TODO add more things to the score
+        return score;
     }
 
     public void Restart()
