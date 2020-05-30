@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void GameIsOver()
     {
 
+        audioManager.Stop("GameTheme");
         audioManager.Play("PlayerDeath");
 
         player.GetComponent<PlayerMovement>().isMoving = false;
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;
+        audioManager.Play("GameTheme");
     }
 
     public void UpdateScore(int distance)

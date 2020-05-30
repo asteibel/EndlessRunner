@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     public GameObject highScore;
     public TextMeshProUGUI highScoreValue;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -24,10 +26,15 @@ public class MainMenu : MonoBehaviour
             highScore.SetActive(true);
             highScoreValue.SetText(gameManager.gameData.highScore.ToString());
         }
+
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager.Play("MenuTheme");
     }
 
     public void StartGame()
     {
+        audioManager.Stop("MenuTheme");
+        audioManager.Play("GameTheme");
         gameManager.StartGame();
         StartCoroutine(ChangeCameraToFollowPlayer());
     }

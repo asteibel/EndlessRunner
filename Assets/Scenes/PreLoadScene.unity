@@ -3549,10 +3549,22 @@ MonoBehaviour:
   sounds:
   - name: PlayerDeath
     clip: {fileID: 8300000, guid: 9ce021981d87b49218d7b2bdcced557b, type: 3}
-    volume: 0.426
+    volume: 0.8
     pitch: 1.66
     source: {fileID: 0}
     loop: 0
+  - name: MenuTheme
+    clip: {fileID: 8300000, guid: 10ce3f8fe9ab94fcf91ecb8bb1ac7311, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: GameTheme
+    clip: {fileID: 8300000, guid: a059a3db721c94a078e900377f4dbbec, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
 --- !u!4 &2124033524
 Transform:
   m_ObjectHideFlags: 0
