@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     private Animator fadeSystem;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         if (instance != null)
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
         lastSpeedMultiplerDistance = 0;
 
         fadeSystem = GameObject.FindGameObjectWithTag("FadeSystem").GetComponent<Animator>();
+
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     public void StartGame()
@@ -81,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void GameIsOver()
     {
 
+        audioManager.Play("PlayerDeath");
 
         player.GetComponent<PlayerMovement>().isMoving = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
@@ -114,7 +119,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int distance)
     {
         updateScore.UpdateDistance(distance);
-        if (distance > gameData.highScore && gameData.highScore > 0)
+        if (distance > gameData.longestDistanceRan && gameData.longestDistanceRan > 0)
         {
             updateScore.IsHighScoring();
         }

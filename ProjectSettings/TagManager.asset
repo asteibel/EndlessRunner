@@ -8,6 +8,7 @@ TagManager:
   - InGameCanvas
   - GameManager
   - FadeSystem
+  - AudioManager
   layers:
   - Default
   - TransparentFX
