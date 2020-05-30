@@ -21,7 +21,6 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-        Debug.Log("playing " + name);
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
@@ -33,7 +32,6 @@ public class AudioManager : MonoBehaviour
 
     public void Stop(string name)
     {
-        Debug.Log("stop playing " + name);
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
