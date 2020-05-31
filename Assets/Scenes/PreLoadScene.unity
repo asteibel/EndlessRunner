@@ -242,7 +242,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 939524095
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3617,6 +3617,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0a446f8545e0544188ce160e68a66fe0, type: 3}
     volume: 0.5
     pitch: 1.66
+    source: {fileID: 0}
+    loop: 0
+    soundType: 1
+  - name: Win
+    clip: {fileID: 8300000, guid: ed61f47f1072f4e7baa01a670f9e5b79, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     soundType: 1
