@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        Debug.Log("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // gameOverElements.SetActive(false);
         Time.timeScale = 1f;
@@ -153,7 +152,8 @@ public class GameManager : MonoBehaviour
 
 
         gameOverAnimator.ResetTrigger("GameIsOver");
-        gameOverAnimator.SetTrigger("RestartGame");
+        gameOverAnimator.SetTrigger("ResetGameOverScreen");
+        updateScore.UpdateDistance(0);
     }
 
     public void UpdateScore(int distance)
@@ -177,5 +177,22 @@ public class GameManager : MonoBehaviour
         gameData.highScore = 0;
         gameData.longestDistanceRan = 0;
         UpdateScore(0);
+    }
+
+    public void GoBackToMenu()
+    {
+        fadeSystem.SetTrigger("StartFadeTransition");
+        gameOverAnimator.SetTrigger("ResetGameOverScreen");
+        updateScore.UpdateDistance(0);
+        StartCoroutine(GoToMenu());
+    }
+
+    private IEnumerator GoToMenu()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1f;
+        inGameCanvas.SetActive(false);
+        player.SetActive(false);
+        SceneManager.LoadScene("Menu");
     }
 }
