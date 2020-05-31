@@ -117,10 +117,21 @@ public class GameManager : MonoBehaviour
         bool isHighScore = score > gameData.highScore;
         gameOver.GameIsOver(distanceRan, maxSpeed, score, isHighScore, gameData.highScore);
 
+        if (isHighScore)
+        {
+            StartCoroutine(PlayHighScoreSound());
+        }
+
         gameData.highScore = Mathf.Max(score, gameData.highScore);
         gameData.longestDistanceRan = Mathf.Max(distanceRan, gameData.longestDistanceRan);
         updateScore.UpdateLongestDistanceRan(gameData.longestDistanceRan);
         SaveSystem.SaveGame(gameData);
+    }
+
+    public IEnumerator PlayHighScoreSound()
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
+        audioManager.Play("Win");
     }
 
     public int ComputeScore(int distanceRan, float maxSpeed)
@@ -132,6 +143,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        Debug.Log("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // gameOverElements.SetActive(false);
         Time.timeScale = 1f;
