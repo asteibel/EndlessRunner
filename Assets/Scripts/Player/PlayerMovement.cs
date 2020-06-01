@@ -85,6 +85,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 {
+
+                    if (Random.value < 0.5f)
+                    {
+                        audioManager.Play("Jump");
+                    }
+                    else
+                    {
+                        audioManager.Play("Jump2");
+                    }
+
                     rb.velocity = Vector2.up * jumpForce;
                 }
             }
