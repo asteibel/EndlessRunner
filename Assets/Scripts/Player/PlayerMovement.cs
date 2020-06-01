@@ -117,8 +117,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
         }
-
-        animator.SetFloat("PlayerYSpeed", rb.velocity.y);
     }
 
     public int currentDistance = 0;
@@ -137,7 +135,22 @@ public class PlayerMovement : MonoBehaviour
                 gameManager.UpdateScore(currentDistance);
             }
         }
-     }
+
+        if (rb.velocity.y > 2.5f)
+        {
+            Debug.Log("UP");
+            animator.SetInteger("PlayerState", 1);
+        } else if (rb.velocity.y < -2.5f)
+        {
+            Debug.Log("DOWN");
+            animator.SetInteger("PlayerState", -1);
+        } else
+        {
+            Debug.Log("STIL");
+            animator.SetInteger("PlayerState", 0);
+        }
+
+    }
 
     private void OnDrawGizmos()
     {
