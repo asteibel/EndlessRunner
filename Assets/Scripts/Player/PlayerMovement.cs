@@ -30,11 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioManager audioManager;
 
+    private Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -114,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        animator.SetFloat("PlayerYSpeed", rb.velocity.y);
     }
 
     public int currentDistance = 0;
