@@ -37,6 +37,8 @@ public class Obstacle : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
 
+            GameManager.instance.lifeManagerUI.UseLife();
+
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
             if (playerHealth.TakeDamage(1)) // Game is over
