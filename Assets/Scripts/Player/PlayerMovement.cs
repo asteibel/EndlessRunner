@@ -39,12 +39,7 @@ public class PlayerMovement : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 
         animator = GetComponent<Animator>();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     private bool isControlledByMobile = false;
@@ -117,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
         }
+
     }
 
     public int currentDistance = 0;
@@ -136,20 +132,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (rb.velocity.y > 2.5f)
-        {
-            Debug.Log("UP");
-            animator.SetInteger("PlayerState", 1);
-        } else if (rb.velocity.y < -2.5f)
-        {
-            Debug.Log("DOWN");
-            animator.SetInteger("PlayerState", -1);
-        } else
-        {
-            Debug.Log("STIL");
-            animator.SetInteger("PlayerState", 0);
-        }
-
+        animator.SetFloat("PlayerYSpeed", rb.velocity.y);
+        animator.SetFloat("PlayerXSpeed", rb.velocity.x);
     }
 
     private void OnDrawGizmos()
