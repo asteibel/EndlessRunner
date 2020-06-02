@@ -5,15 +5,20 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int numberOfLives = 3;
+    private int numberOfLives = int.MinValue;
 
     /**
      * return if the game is over
      * */
-    public bool TakeDamage(int damagetToTake)
+    public bool TakeDamage(int damageToTake)
     {
-        numberOfLives -= damagetToTake;
-        if (numberOfLives <= 0)
+        if (numberOfLives == int.MinValue)
+        {
+            numberOfLives = Inventory.instance.numberOfLivesAvailable;
+        }
+
+        numberOfLives -= damageToTake;
+        if (numberOfLives < 0)
         {
             GameManager.instance.GameIsOver();
             return true;

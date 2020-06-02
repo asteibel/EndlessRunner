@@ -5,12 +5,29 @@ using UnityEngine;
 public class LifeManagerUI : MonoBehaviour
 {
 
-    public HeartUI[] hearts;
+    public GameObject[] hearts;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        int numberOfLivesAvailable = Inventory.instance.numberOfLivesAvailable;
+        int index = 0;
+        Debug.Log("start, number of lives: " + numberOfLivesAvailable);
+        foreach (GameObject heart in hearts)
+        {
+            int lenght = hearts.Length;
+            if (hearts.Length - index > numberOfLivesAvailable)
+            {
+                Debug.Log("heart " + index + " false");
+                heart.SetActive(false);
+            } else
+            {
+                Debug.Log("heart " + index + " true");
+                heart.SetActive(true);
+            }
+
+            index++;
+        }
     }
 
     // Update is called once per frame
@@ -21,11 +38,12 @@ public class LifeManagerUI : MonoBehaviour
 
     public void UseLife()
     {
-        foreach (HeartUI heart in hearts)
+        foreach (GameObject heart in hearts)
         {
-            if (!heart.hasBeenUsed)
+            HeartUI heartUI = heart.GetComponent<HeartUI>();
+            if (!heartUI.hasBeenUsed && heart.activeInHierarchy)
             {
-                heart.UseHeart();
+                heartUI.UseHeart();
                 break;
             }
         }
@@ -33,9 +51,9 @@ public class LifeManagerUI : MonoBehaviour
 
     public void Reset()
     {
-        foreach (HeartUI heart in hearts)
+        foreach (GameObject heart in hearts)
         {
-            heart.Reset();
+            heart.GetComponent<HeartUI>().Reset();
         }        
     }
 }
