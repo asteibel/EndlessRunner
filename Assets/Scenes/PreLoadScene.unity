@@ -1923,6 +1923,7 @@ MonoBehaviour:
   - {fileID: 377733176}
   - {fileID: 2085510463}
   - {fileID: 2124033522}
+  - {fileID: 1793675872}
 --- !u!4 &963291870
 Transform:
   m_ObjectHideFlags: 0
@@ -2998,6 +2999,7 @@ GameObject:
   - component: {fileID: 1541632387}
   - component: {fileID: 1541632386}
   - component: {fileID: 1541632385}
+  - component: {fileID: 1541632391}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3153,6 +3155,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1541632391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541632384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea2fdf100d31445ba8bd54ec1bb97b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfLives: 3
 --- !u!1 &1772593808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,6 +3266,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 134413800}
   parallaxEffect: 0.95
+--- !u!1 &1793675872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1793675874}
+  - component: {fileID: 1793675873}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1793675873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793675872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ae2db8d23864ab7a18b3c2820e2d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1793675874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793675872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.163812, y: 5.044505, z: -9.46889}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827498795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,6 +3972,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ed61f47f1072f4e7baa01a670f9e5b79, type: 3}
     volume: 1
     pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    soundType: 1
+  - name: PlayerHurt
+    clip: {fileID: 8300000, guid: ea2bfd0e4893c4b8d99c9b935b1e337f, type: 3}
+    volume: 0.8
+    pitch: 1.66
+    source: {fileID: 0}
+    loop: 0
+    soundType: 1
+  - name: PlayerHurt2
+    clip: {fileID: 8300000, guid: 5f2a67027d8a7428f83e2fa967d224e8, type: 3}
+    volume: 0.8
+    pitch: 1.66
     source: {fileID: 0}
     loop: 0
     soundType: 1
