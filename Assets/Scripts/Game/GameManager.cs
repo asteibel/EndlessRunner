@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;
-        player.GetComponent<PlayerHealth>().ResetHealth(3);
+        player.GetComponent<PlayerHealth>().ResetHealth(Inventory.instance.numberOfLivesAvailable);
         lifeManagerUI.Reset();
 
         audioManager.Play("GameTheme");

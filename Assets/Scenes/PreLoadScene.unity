@@ -595,7 +595,7 @@ Transform:
   m_Children:
   - {fileID: 472107400}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139996540
 GameObject:
@@ -1809,9 +1809,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hearts:
-  - {fileID: 1896440578}
-  - {fileID: 995405961}
-  - {fileID: 1722462551}
+  - {fileID: 1896440577}
+  - {fileID: 995405960}
+  - {fileID: 1722462550}
 --- !u!1 &652149811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963291871
 MonoBehaviour:
@@ -3298,7 +3298,7 @@ Transform:
   m_Children:
   - {fileID: 871751059}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1541632391
 MonoBehaviour:
@@ -3312,7 +3312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea2fdf100d31445ba8bd54ec1bb97b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfLives: 3
 --- !u!1 &1722462550
 GameObject:
   m_ObjectHideFlags: 0
@@ -3528,6 +3527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ae2db8d23864ab7a18b3c2820e2d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfLivesAvailable: 3
 --- !u!4 &1793675874
 Transform:
   m_ObjectHideFlags: 0
@@ -4322,7 +4322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141168593
 GameObject:
