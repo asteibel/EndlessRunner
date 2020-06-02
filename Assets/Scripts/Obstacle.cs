@@ -53,7 +53,7 @@ public class Obstacle : MonoBehaviour
                 }
                 Debug.Log("has hit an obsctable in " + levelPartName);
 
-                int distance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().currentDistance;
+                int distance = collision.GetComponent<PlayerMovement>().currentDistance;
                 int highScore = GameManager.instance.gameData.highScore;
 
                 Firebase.Analytics.Parameter[] gameOVerParameters = {
@@ -79,6 +79,7 @@ public class Obstacle : MonoBehaviour
                     soundToPlay = "PlayerHurt2";
                 }
                 GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play(soundToPlay);
+                collision.GetComponent<Animator>().SetTrigger("PlayerHurt");
             }
 
             
