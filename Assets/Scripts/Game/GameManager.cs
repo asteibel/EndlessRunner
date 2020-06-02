@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public LifeManagerUI lifeManagerUI;
+
     private void Awake()
     {
 
@@ -149,6 +151,8 @@ public class GameManager : MonoBehaviour
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;
         player.GetComponent<PlayerHealth>().ResetHealth(3);
+        lifeManagerUI.Reset();
+
         audioManager.Play("GameTheme");
 
 
