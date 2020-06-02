@@ -34,26 +34,29 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManager gameManager = GameManager.instance;
         if (collision.CompareTag("Player"))
         {
-            gameManager.GameIsOver();
 
-            string levelPartName;
-            if  (transform.parent != null)
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+
+            if (playerHealth.TakeDamage(1)) // Game is over
             {
-                levelPartName = transform.parent.name;
-            } else
-            {
-                levelPartName = "no_parent";
-                
-            }
-            Debug.Log("has hit an obsctable in " + levelPartName);
+                string levelPartName;
+                if (transform.parent != null)
+                {
+                    levelPartName = transform.parent.name;
+                }
+                else
+                {
+                    levelPartName = "no_parent";
 
-            int distance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().currentDistance;
-            int highScore = gameManager.gameData.highScore;
+                }
+                Debug.Log("has hit an obsctable in " + levelPartName);
 
-            Firebase.Analytics.Parameter[] gameOVerParameters = {
+                int distance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().currentDistance;
+                int highScore = GameManager.instance.gameData.highScore;
+
+                Firebase.Analytics.Parameter[] gameOVerParameters = {
                 new Firebase.Analytics.Parameter(
                 "LevelPart", levelPartName),
                 new Firebase.Analytics.Parameter(
@@ -63,7 +66,22 @@ public class Obstacle : MonoBehaviour
                 new Firebase.Analytics.Parameter(
                  "HighScore", highScore)
                 };
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", gameOVerParameters);
+                Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", gameOVerParameters);
+            } else
+            {
+                string soundToPlay;
+                if (Random.value <  0.5f)
+                {
+                    soundToPlay = "PlayerHurt";
+
+                } else
+                {
+                    soundToPlay = "PlayerHurt2";
+                }
+                GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play(soundToPlay);
+            }
+
+            
         }
     }
 }

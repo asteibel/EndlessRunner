@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;
+        player.GetComponent<PlayerHealth>().ResetHealth(3);
         audioManager.Play("GameTheme");
 
 
