@@ -106,18 +106,6 @@ public class GameManager : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
 
-        player.GetComponent<Animator>().SetTrigger("PlayerDie");
-
-        StartCoroutine(StartGameOverRoutine());
-    }
-
-    public IEnumerator StartGameOverRoutine()
-    {
-
-        yield return new WaitForSeconds(0.5f);
-
-        player.GetComponent<Animator>().ResetTrigger("PlayerDie");
-
         Time.timeScale = 0f;
 
         //        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
