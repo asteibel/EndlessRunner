@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -99,5 +100,10 @@ public class MainMenu : MonoBehaviour
             changeSounds.SetText("Turn ON");
         }
         SaveSystem.SaveGameSettings(gameManager.gameSettings);
+    }
+
+    public void ShowLeaderBoard()
+    {
+        GPGSManager.ShowLeaderBoardUI();
     }
 }
