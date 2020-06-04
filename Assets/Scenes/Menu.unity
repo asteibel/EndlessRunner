@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GPGS
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54fa42255a5af48d1a9c142301782133, type: 2}
   m_sharedMaterial: {fileID: 8782447121322009387, guid: 54fa42255a5af48d1a9c142301782133,
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 709628548}
-    characterCount: 4
+    characterCount: 11
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
