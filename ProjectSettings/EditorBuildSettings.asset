@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/GPGSSignIn.unity
-    guid: 87bfc92e3ad6b4a428c7ed1c44100c04
   m_configObjects: {}
