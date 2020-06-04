@@ -165,7 +165,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.marcusruns
   buildNumber: {}
-  AndroidBundleVersionCode: 4
+  AndroidBundleVersionCode: 5
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -266,7 +266,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -278,7 +278,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 281330f9c50df4a8aa8f014d35c81db4, type: 3}
+      m_Icon: {fileID: 2800000, guid: 0c2b4b36b3d31492eb2c68b2e9230f70, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -286,8 +286,8 @@ PlayerSettings:
   - m_BuildTarget: Android
     m_Icons:
     - m_Textures:
-      - {fileID: 2800000, guid: 281330f9c50df4a8aa8f014d35c81db4, type: 3}
-      - {fileID: 2800000, guid: 25c6b7ed260604ea088c780d5c741fc3, type: 3}
+      - {fileID: 2800000, guid: 5efc7bc8ccdd843d5ad8cd4668542bcc, type: 3}
+      - {fileID: 2800000, guid: 7b94ff288502a48fdb3f1097b8874ec5, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
@@ -318,7 +318,7 @@ PlayerSettings:
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 1e6b3d5d9cba345d59fcccc2d0ccdb39, type: 3}
+      - {fileID: 2800000, guid: 0c2b4b36b3d31492eb2c68b2e9230f70, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 1
@@ -354,7 +354,7 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 1e6b3d5d9cba345d59fcccc2d0ccdb39, type: 3}
+      - {fileID: 2800000, guid: 0c2b4b36b3d31492eb2c68b2e9230f70, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
@@ -378,13 +378,13 @@ PlayerSettings:
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 1e6b3d5d9cba345d59fcccc2d0ccdb39, type: 3}
+      - {fileID: 2800000, guid: 0c2b4b36b3d31492eb2c68b2e9230f70, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 1e6b3d5d9cba345d59fcccc2d0ccdb39, type: 3}
+      - {fileID: 2800000, guid: 0c2b4b36b3d31492eb2c68b2e9230f70, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 0
