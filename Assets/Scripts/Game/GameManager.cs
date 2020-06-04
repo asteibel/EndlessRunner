@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
         if (isHighScore)
         {
             StartCoroutine(PlayHighScoreSound());
+            GPGSManager.PostToLeaderBoard(score);
         }
 
         gameData.highScore = Mathf.Max(score, gameData.highScore);
