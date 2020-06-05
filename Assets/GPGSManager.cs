@@ -10,6 +10,7 @@ public class GPGSManager : MonoBehaviour
 
     public static void Authenticate(System.Action<bool> callback)
     {
+        
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
@@ -58,6 +59,6 @@ public class GPGSManager : MonoBehaviour
 
     public static class Achievements
     {
-        public static string FIRST_RUN = "CgkIkoHks9QfEAIQBA";
+        public static string FIRST_RUN = "CgkIkoHks9QfEAIQCA";
     }
 }
