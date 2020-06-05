@@ -45,4 +45,19 @@ public class GPGSManager : MonoBehaviour
     {
         PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_high_score);
     }
+
+    public static void ShowAchievementsUI()
+    {
+        PlayGamesPlatform.Instance.ShowAchievementsUI();
+    }
+
+    public static void UnlockAchievement(string achievementId)
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement(achievementId);
+    }
+
+    public static class Achievements
+    {
+        public static string FIRST_RUN = "CgkIkoHks9QfEAIQBA";
+    }
 }

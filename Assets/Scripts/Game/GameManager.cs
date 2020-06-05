@@ -123,9 +123,11 @@ public class GameManager : MonoBehaviour
 
         if (isHighScore)
         {
-            StartCoroutine(PlayHighScoreSound());
             GPGSManager.PostToLeaderBoard(score);
+            StartCoroutine(PlayHighScoreSound());
         }
+
+        GPGSManager.UnlockAchievement(GPGSManager.Achievements.FIRST_RUN);
 
         gameData.highScore = Mathf.Max(score, gameData.highScore);
         gameData.longestDistanceRan = Mathf.Max(distanceRan, gameData.longestDistanceRan);
