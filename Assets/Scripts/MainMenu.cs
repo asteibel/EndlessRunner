@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI changeMusic;
     public TextMeshProUGUI changeSounds;
 
+    public GameObject leaderboardButton;
+
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -50,6 +52,12 @@ public class MainMenu : MonoBehaviour
         {
             changeSounds.SetText("Turn ON");
         }
+
+        leaderboardButton.SetActive(false);
+        GPGSManager.Authenticate((bool success) =>
+        {
+            leaderboardButton.SetActive(success);
+        });
     }
 
     public void StartGame()

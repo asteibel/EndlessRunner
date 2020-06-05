@@ -7,33 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class GPGSManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Authenticate();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public static void Authenticate()
+    public static void Authenticate(System.Action<bool> callback)
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
         Social.localUser.Authenticate((bool success, string message) =>
         {
+            callback.Invoke(success);
             if (success)
             {
                 Debug.Log("success");
             } else
             {
+                Toaster.instance.ShowToast(message, 3);
                 Debug.LogError("Error: " + message);
             }
-            SceneManager.LoadScene("Menu");
         });
     }
 

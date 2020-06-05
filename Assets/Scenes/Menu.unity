@@ -441,6 +441,7 @@ MonoBehaviour:
   highScoreValue: {fileID: 1444902441}
   changeMusic: {fileID: 269726782}
   changeSounds: {fileID: 1680964662}
+  leaderboardButton: {fileID: 1176379557}
 --- !u!4 &92218368
 Transform:
   m_ObjectHideFlags: 0
