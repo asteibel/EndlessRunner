@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI changeSounds;
 
     public GameObject leaderboardButton;
+    public GameObject achievementsButton;
 
     private void Awake()
     {
@@ -54,9 +55,11 @@ public class MainMenu : MonoBehaviour
         }
 
         leaderboardButton.SetActive(false);
+        achievementsButton.SetActive(false);
         GPGSManager.Authenticate((bool success) =>
         {
             leaderboardButton.SetActive(success);
+            achievementsButton.SetActive(success);
         });
     }
 
@@ -113,5 +116,10 @@ public class MainMenu : MonoBehaviour
     public void ShowLeaderBoard()
     {
         GPGSManager.ShowLeaderBoardUI();
+    }
+
+    public void ShowAchievements()
+    {
+        GPGSManager.ShowAchievementsUI();
     }
 }
