@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         gameData = SaveSystem.LoadGame();
         if  (gameData == null)
         {
-            gameData = new GameData(0, 0);
+            gameData = new GameData(0, 0, 0, 0, 0);
         }
         updateScore.UpdateLongestDistanceRan(gameData.longestDistanceRan);
 
@@ -127,7 +127,43 @@ public class GameManager : MonoBehaviour
             StartCoroutine(PlayHighScoreSound());
         }
 
-        GPGSManager.UnlockAchievement(GPGSManager.Achievements.FIRST_RUN);
+        gameData.numberOfRuns += 1;
+        gameData.totalDistanceRan += distanceRan;
+
+        if (gameData.numberOfRuns == 1)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.NOVICE);
+        } else if (gameData.numberOfRuns == 10)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.ADEPT);
+        } else if (gameData.numberOfRuns == 50)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.PRO);
+        } else if (gameData.numberOfRuns == 100)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.EXPERT);
+        }
+
+        if (distanceRan >= 250)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.NICE_RUN);
+        }
+        if (distanceRan >= 500)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.GREAT_RUN);
+        }
+        if (distanceRan >= 1000)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.AWESOME_RUN);
+        }
+        if (distanceRan >= 2500)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.EPIC_RUN);
+        }
+        if(distanceRan >= 5000)
+        {
+            GPGSManager.UnlockAchievement(GPGSManager.Achievements.LEGENDARY_RUN);
+        }
 
         gameData.highScore = Mathf.Max(score, gameData.highScore);
         gameData.longestDistanceRan = Mathf.Max(distanceRan, gameData.longestDistanceRan);

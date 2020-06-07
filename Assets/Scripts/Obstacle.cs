@@ -36,6 +36,12 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            GameManager.instance.gameData.numberOfCactusesHit += 1;
+
+            if (GameManager.instance.gameData.numberOfCactusesHit >= 50)
+            {
+                GPGSManager.UnlockAchievement(GPGSManager.Achievements.CACTUS_LOVER);
+            }
 
             GameManager.instance.lifeManagerUI.UseLife();
 
