@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float playerJumpTimeToRemember = 0.2f;
     private float lastJumpPress = -1f;
+    private float lastGrounded = -1f;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         lastJumpPress -= Time.deltaTime;
+        lastGrounded -= Time.deltaTime;
 
         if (!isMoving)
         {
@@ -79,7 +81,12 @@ public class PlayerMovement : MonoBehaviour
             lastJumpPress = playerJumpTimeToRemember;
         }
 
-        if (isGrounded && isMoving)
+        if (isGrounded)
+        {
+            lastGrounded = playerJumpTimeToRemember;
+        }
+
+        if ((lastGrounded > 0) && isMoving)
         {
             if (lastJumpPress > 0)
             {
@@ -92,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
                     audioManager.Play("Jump2");
                 }
                 rb.velocity = Vector2.up * jumpForce;
+                lastJumpPress = 0;
+                lastGrounded = 0;
 
             }
 
