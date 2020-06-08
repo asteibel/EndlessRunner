@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
 
+    private float playerJumpTimeToRemember = 0.2f;
+    private float lastJumpPress = -1f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        lastJumpPress -= Time.deltaTime;
 
         if (!isMoving)
         {
@@ -66,10 +71,34 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (isGrounded)
+        if (isControlledByKeys && Input.GetKeyDown(KeyCode.Space))
         {
-            if (isMoving && isControlledByKeys && Input.GetKeyDown(KeyCode.Space)) // Begin jump
+            lastJumpPress = playerJumpTimeToRemember;
+        } else if (isControlledByMobile && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            lastJumpPress = playerJumpTimeToRemember;
+        }
+
+        if (isGrounded && isMoving)
+        {
+            if (lastJumpPress > 0)
             {
+                if (Random.value < 0.5f)
+                {
+                    audioManager.Play("Jump");
+                }
+                else
+                {
+                    audioManager.Play("Jump2");
+                }
+                rb.velocity = Vector2.up * jumpForce;
+
+            }
+
+
+            /**if (isControlledByKeys && Input.GetKeyDown(KeyCode.Space)) // Begin jump
+            {
+
                 if (Random.value < 0.5f)
                 {
                     audioManager.Play("Jump");
@@ -80,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
                 } 
                 rb.velocity = Vector2.up * jumpForce;
             }
-            else if (isMoving && isControlledByMobile)
+            else if (isControlledByMobile)
             {
                 if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 {
@@ -96,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
 
                     rb.velocity = Vector2.up * jumpForce;
                 }
-            }
+            } */
         }
 
         if (rb.velocity.y < 0) // Falling, apply extra gravity
