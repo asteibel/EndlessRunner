@@ -7,13 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class GPGSManager : MonoBehaviour
 {
-
+    
     public static void Authenticate(System.Action<bool> callback)
     {
-
-        PlayGamesClientConfiguration.Builder test = new PlayGamesClientConfiguration.Builder();
-        test.IsHidingPopups();
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+        /**PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
         Social.localUser.Authenticate((bool success, string message) =>
@@ -27,12 +24,14 @@ public class GPGSManager : MonoBehaviour
                 Toaster.instance.ShowToast(message, 3);
                 Debug.LogError("Error: " + message);
             }
-        });
+        });*/
+
+        callback.Invoke(false);
     }
 
     public static void PostToLeaderBoard(int score)
     {
-        Social.ReportScore(score, GPGSIds.leaderboard_high_score, (bool success) =>
+        /**Social.ReportScore(score, GPGSIds.leaderboard_high_score, (bool success) =>
         {
             if (success)
             {
@@ -41,22 +40,22 @@ public class GPGSManager : MonoBehaviour
             {
                 Debug.LogError("Unable to post to leaderboard");
             }
-        });
+        });*/
     }
 
     public static void ShowLeaderBoardUI()
     {
-        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_high_score);
+        // PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_high_score);
     }
 
     public static void ShowAchievementsUI()
     {
-        PlayGamesPlatform.Instance.ShowAchievementsUI();
+        // PlayGamesPlatform.Instance.ShowAchievementsUI();
     }
 
     public static void UnlockAchievement(string achievementId)
     {
-        PlayGamesPlatform.Instance.UnlockAchievement(achievementId);
+        // PlayGamesPlatform.Instance.UnlockAchievement(achievementId);
     }
 
     public static class Achievements

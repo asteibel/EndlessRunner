@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Firebase.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -81,10 +80,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         fadeSystem.SetTrigger("StartFadeTransition");
-        // inGameCanvas.SetActive(true);
-        // player.SetActive(true);
         StartCoroutine(LaunchGame());
-        FirebaseAnalytics.LogEvent("GameStarted");
+        Analytics.instance.LogGameStarted();
     }
 
     private IEnumerator LaunchGame()

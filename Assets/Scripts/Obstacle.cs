@@ -64,17 +64,7 @@ public class Obstacle : MonoBehaviour
                 int distance = collision.GetComponent<PlayerMovement>().currentDistance;
                 int highScore = GameManager.instance.gameData.highScore;
 
-                Firebase.Analytics.Parameter[] gameOVerParameters = {
-                new Firebase.Analytics.Parameter(
-                "LevelPart", levelPartName),
-                new Firebase.Analytics.Parameter(
-                 "DeathType", "obstacle"),
-                new Firebase.Analytics.Parameter(
-                 "Score", distance),
-                new Firebase.Analytics.Parameter(
-                 "HighScore", highScore)
-                };
-                Firebase.Analytics.FirebaseAnalytics.LogEvent("GameOver", gameOVerParameters);
+                Analytics.instance.LogGameOver(levelPartName, "obstacle", distance, highScore);
             } else
             {
                 string soundToPlay;
