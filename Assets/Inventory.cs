@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
 
-    public int numberOfLivesAvailable = 0;
+    public int numberOfLivesAvailable = 3;
 
     private void Awake()
     {
