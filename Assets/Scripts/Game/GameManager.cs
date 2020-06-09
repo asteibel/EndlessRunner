@@ -37,18 +37,17 @@ public class GameManager : MonoBehaviour
 
     public LifeManagerUI lifeManagerUI;
 
+    public FirstTimeRunHint firstTimeRunHint;
+
     private void Awake()
     {
-
+        Debug.Log("AWAKE game manager");
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of GameManager");
             return;
         }
         instance = this;
-
-        // gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        // gameOverElements.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
         inGameCanvas = GameObject.FindGameObjectWithTag("InGameCanvas");
@@ -94,6 +93,7 @@ public class GameManager : MonoBehaviour
         inGameCanvas.SetActive(true);
         player.SetActive(true);
         SceneManager.LoadScene("GameScene");
+        firstTimeRunHint.FadeOut();
     }
 
     public void GameIsOver()
@@ -200,6 +200,9 @@ public class GameManager : MonoBehaviour
         gameOverAnimator.ResetTrigger("GameIsOver");
         gameOverAnimator.SetTrigger("ResetGameOverScreen");
         updateScore.UpdateDistance(0);
+
+        firstTimeRunHint.Reset();
+        firstTimeRunHint.FadeOut();
     }
 
     public void UpdateScore(int distance)
