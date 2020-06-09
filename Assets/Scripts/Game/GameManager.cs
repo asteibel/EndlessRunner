@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Firebase.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,9 +36,15 @@ public class GameManager : MonoBehaviour
 
     public LifeManagerUI lifeManagerUI;
 
+    public FirstTimeRunHint firstTimeRunHint;
+
+    private Animator playerAnimator;
+
+    public bool gameIsOver = false;
+
     private void Awake()
     {
-
+        Debug.Log("AWAKE game manager");
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of GameManager");
@@ -47,17 +52,13 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-        // gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        // gameOverElements.SetActive(false);
-
         player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
         inGameCanvas = GameObject.FindGameObjectWithTag("InGameCanvas");
         gameOverAnimator = gameOverElements.GetComponent<Animator>();
 
         inGameCanvas.SetActive(false);
         player.SetActive(false);
-
-        Time.timeScale = 1f;
 
         gameData = SaveSystem.LoadGame();
         if  (gameData == null)
@@ -82,10 +83,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         fadeSystem.SetTrigger("StartFadeTransition");
-        // inGameCanvas.SetActive(true);
-        // player.SetActive(true);
         StartCoroutine(LaunchGame());
-        FirebaseAnalytics.LogEvent("GameStarted");
+        Analytics.getInstance().LogGameStarted();
     }
 
     private IEnumerator LaunchGame()
@@ -94,24 +93,23 @@ public class GameManager : MonoBehaviour
         inGameCanvas.SetActive(true);
         player.SetActive(true);
         SceneManager.LoadScene("GameScene");
+        firstTimeRunHint.FadeOut();
     }
 
     public void GameIsOver()
     {
+        gameIsOver = true;
 
         audioManager.Stop("GameTheme");
         audioManager.Play("PlayerDeath");
 
         player.GetComponent<PlayerMovement>().isMoving = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
+        playerAnimator.SetTrigger("PlayerDie");
 
-        Time.timeScale = 0f;
-
-        //        gameOverBackground.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
-        // gameOverElements.SetActive(true);
-
-        gameOverAnimator.ResetTrigger("RestartGame");
+        gameOverAnimator.ResetTrigger("ResetGameOverScreen");
         gameOverAnimator.SetTrigger("GameIsOver");
 
 
@@ -186,20 +184,39 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        // gameOverElements.SetActive(false);
-        Time.timeScale = 1f;
+
+        gameOverAnimator.ResetTrigger("GameIsOver");
+        gameOverAnimator.SetTrigger("ResetGameOverScreen");
+
+        fadeSystem.SetTrigger("StartFadeTransition");
+
+        StartCoroutine(RestartCoroutine());
+    }
+
+    private IEnumerator RestartCoroutine()
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        playerAnimator.ResetTrigger("PlayerDie");
+        playerAnimator.SetTrigger("PlayerRestart");
+
+        firstTimeRunHint.Reset();
+        firstTimeRunHint.FadeOut();
+
+        audioManager.Play("GameTheme");
+        updateScore.UpdateDistance(0);
+
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         lastSpeedMultiplerDistance = 0;
         playerMovement.speedMultiplier = 1f;
         player.GetComponent<PlayerHealth>().ResetHealth(Inventory.instance.numberOfLivesAvailable);
         lifeManagerUI.Reset();
 
-        audioManager.Play("GameTheme");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+        yield return new WaitForSeconds(0.25f);
 
-        gameOverAnimator.ResetTrigger("GameIsOver");
-        gameOverAnimator.SetTrigger("ResetGameOverScreen");
-        updateScore.UpdateDistance(0);
+        gameIsOver = false;
     }
 
     public void UpdateScore(int distance)

@@ -19,11 +19,11 @@ public class GameOver : MonoBehaviour
         if (isHighscore)
         {
             highScoreText.SetText("NEW HIGH SCORE!");
-            highScoreText.fontSize = 100;
+            highScoreText.fontSize = 60;
         } else
         {
             highScoreText.SetText("High Score: " + highscore.ToString());
-            highScoreText.fontSize = 70;
+            highScoreText.fontSize = 55;
         }
     }
 }

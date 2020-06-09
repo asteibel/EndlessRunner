@@ -7,12 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class GPGSManager : MonoBehaviour
 {
-
+    
     public static void Authenticate(System.Action<bool> callback)
     {
-
-        PlayGamesClientConfiguration.Builder test = new PlayGamesClientConfiguration.Builder();
-        test.IsHidingPopups();
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
@@ -28,6 +25,8 @@ public class GPGSManager : MonoBehaviour
                 Debug.LogError("Error: " + message);
             }
         });
+
+        callback.Invoke(false);
     }
 
     public static void PostToLeaderBoard(int score)

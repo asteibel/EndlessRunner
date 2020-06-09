@@ -1,0 +1,16 @@
+{
+"companyName": "AudricSGaming",
+"productName": "Desert Runner",
+"productVersion": "1.2.0",
+"dataUrl": "desert-runner.data.unityweb",
+"wasmCodeUrl": "desert-runner.wasm.code.unityweb",
+"wasmFrameworkUrl": "desert-runner.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.3.15f1"
+}

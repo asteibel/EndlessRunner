@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         lastJumpPress -= Time.deltaTime;
         lastGrounded -= Time.deltaTime;
 
-        if (!isMoving)
+        if (!isMoving && !gameManager.gameIsOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -81,60 +81,25 @@ public class PlayerMovement : MonoBehaviour
             lastJumpPress = playerJumpTimeToRemember;
         }
 
-        if (isGrounded)
+        /**if (isGrounded)
         {
             lastGrounded = playerJumpTimeToRemember;
         }
 
-        if ((lastGrounded > 0) && isMoving)
+        if ((lastGrounded > 0) && isMoving && (lastJumpPress > 0))
         {
-            if (lastJumpPress > 0)
+            Debug.Log("to jump:  " + lastGrounded + " and " + lastJumpPress);
+            if (Random.value < 0.5f)
             {
-                if (Random.value < 0.5f)
-                {
-                    audioManager.Play("Jump");
-                }
-                else
-                {
-                    audioManager.Play("Jump2");
-                }
-                rb.velocity = Vector2.up * jumpForce;
-                lastJumpPress = 0;
-                lastGrounded = 0;
-
+                audioManager.Play("Jump");
             }
-
-
-            /**if (isControlledByKeys && Input.GetKeyDown(KeyCode.Space)) // Begin jump
+            else
             {
-
-                if (Random.value < 0.5f)
-                {
-                    audioManager.Play("Jump");
-                }
-                else
-                {
-                    audioManager.Play("Jump2");
-                } 
-                rb.velocity = Vector2.up * jumpForce;
+                audioManager.Play("Jump2");
             }
-            else if (isControlledByMobile)
-            {
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                {
-
-                    if (Random.value < 0.5f)
-                    {
-                        audioManager.Play("Jump");
-                    }
-                    else
-                    {
-                        audioManager.Play("Jump2");
-                    }
-
-                    rb.velocity = Vector2.up * jumpForce;
-                }
-            } */
+            lastJumpPress = 0;
+            lastGrounded = 0;
+            rb.velocity = Vector2.up * jumpForce;
         }
 
         if (rb.velocity.y < 0) // Falling, apply extra gravity
@@ -149,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
-        }
+        } */
 
     }
 
@@ -167,6 +132,44 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentDistance = Mathf.RoundToInt(transform.position.x - startingPosition ?? 0f);
                 gameManager.UpdateScore(currentDistance);
+            }
+        }
+
+
+        if (isGrounded)
+        {
+            lastGrounded = playerJumpTimeToRemember;
+        }
+
+        if ((lastGrounded > 0) && isMoving && (lastJumpPress > 0))
+        {
+            Debug.Log("to jump:  " + lastGrounded + " and " + lastJumpPress);
+            if (Random.value < 0.5f)
+            {
+                audioManager.Play("Jump");
+            }
+            else
+            {
+                audioManager.Play("Jump2");
+            }
+            lastJumpPress = 0;
+            lastGrounded = 0;
+            rb.velocity = Vector2.up * jumpForce;
+        }
+
+        if (rb.velocity.y < 0) // Falling, apply extra gravity
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0)
+        {
+            if (isControlledByKeys && !Input.GetKey(KeyCode.Space))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+            }
+            else if (isControlledByMobile && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.touchCount == 0))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
         }
 
