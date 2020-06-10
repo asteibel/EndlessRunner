@@ -81,6 +81,14 @@ public class PlayerMovement : MonoBehaviour
             lastJumpPress = playerJumpTimeToRemember;
         }
 
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKey(KeyCode.M))
+        {
+            animator.SetBool("PlayerSlide", true);
+        } else
+        {
+            animator.SetBool("PlayerSlide", false);
+        }
+
         /**if (isGrounded)
         {
             lastGrounded = playerJumpTimeToRemember;
